@@ -1,0 +1,174 @@
+[gd_scene load_steps=6 format=3 uid="uid://dhf03mc13fw8l"]
+
+[ext_resource type="PackedScene" uid="uid://c7kc54tc6mcbj" path="res://Player/Platyer.tscn" id="1_p7x0p"]
+[ext_resource type="Script" uid="uid://ch50skp1b34q0" path="res://Screens/GameScreen.gd" id="1_sne8m"]
+[ext_resource type="Texture2D" uid="uid://dd602rrc0cunm" path="res://assets/WhiteSquare.png" id="2_q7e6u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q7e6u"]
+size = Vector2(1152, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sne8m"]
+size = Vector2(45, 648)
+
+[node name="GameScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sne8m")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0, 0, 0, 1)
+
+[node name="Decoration" type="Node2D" parent="."]
+modulate = Color(1, 1, 1, 0.498039)
+
+[node name="WhiteSquare" type="Sprite2D" parent="Decoration"]
+position = Vector2(576, 27)
+scale = Vector2(1.5, 13.5)
+texture = ExtResource("2_q7e6u")
+
+[node name="WhiteSquare2" type="Sprite2D" parent="Decoration"]
+position = Vector2(576, 100)
+scale = Vector2(1.5, 13.5)
+texture = ExtResource("2_q7e6u")
+
+[node name="WhiteSquare3" type="Sprite2D" parent="Decoration"]
+position = Vector2(576, 177)
+scale = Vector2(1.5, 13.5)
+texture = ExtResource("2_q7e6u")
+
+[node name="WhiteSquare4" type="Sprite2D" parent="Decoration"]
+position = Vector2(576, 257)
+scale = Vector2(1.5, 13.5)
+texture = ExtResource("2_q7e6u")
+
+[node name="WhiteSquare5" type="Sprite2D" parent="Decoration"]
+position = Vector2(576, 327)
+scale = Vector2(1.5, 13.5)
+texture = ExtResource("2_q7e6u")
+
+[node name="WhiteSquare6" type="Sprite2D" parent="Decoration"]
+position = Vector2(576, 400)
+scale = Vector2(1.5, 13.5)
+texture = ExtResource("2_q7e6u")
+
+[node name="WhiteSquare7" type="Sprite2D" parent="Decoration"]
+position = Vector2(576, 477)
+scale = Vector2(1.5, 13.5)
+texture = ExtResource("2_q7e6u")
+
+[node name="WhiteSquare8" type="Sprite2D" parent="Decoration"]
+position = Vector2(576, 550)
+scale = Vector2(1.5, 13.5)
+texture = ExtResource("2_q7e6u")
+
+[node name="WhiteSquare9" type="Sprite2D" parent="Decoration"]
+position = Vector2(576, 627)
+scale = Vector2(1.5, 13.5)
+texture = ExtResource("2_q7e6u")
+
+[node name="CollisionCelling" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionCelling"]
+position = Vector2(576, -9)
+shape = SubResource("RectangleShape2D_q7e6u")
+
+[node name="CollisionFloor" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionFloor"]
+position = Vector2(576, 657)
+shape = SubResource("RectangleShape2D_q7e6u")
+
+[node name="Player1" parent="." instance=ExtResource("1_p7x0p")]
+position = Vector2(26, 325)
+
+[node name="Player2" parent="." instance=ExtResource("1_p7x0p")]
+position = Vector2(1129, 327)
+choice = "Player 2"
+
+[node name="Player1Area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player1Area"]
+position = Vector2(-25.5, 324)
+shape = SubResource("RectangleShape2D_sne8m")
+
+[node name="Player2Area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player2Area"]
+position = Vector2(1177, 324)
+shape = SubResource("RectangleShape2D_sne8m")
+
+[node name="Player1Score" type="MarginContainer" parent="."]
+layout_mode = 1
+offset_right = 57.0
+offset_bottom = 137.0
+theme_override_constants/margin_left = 250
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Player1Score"]
+modulate = Color(1, 1, 1, 0.67451)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 100
+text = "0"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player2Score" type="MarginContainer" parent="."]
+modulate = Color(1, 1, 1, 0.67451)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -57.0
+offset_bottom = 137.0
+grow_horizontal = 0
+theme_override_constants/margin_right = 250
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Player2Score"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 100
+text = "0"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Counter" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 15
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Counter"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0.544974, 0.544974, 0.544974, 1)
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/shadow_offset_x = -5
+theme_override_constants/shadow_outline_size = 2
+theme_override_font_sizes/normal_font_size = 150
+text = "3"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[connection signal="body_entered" from="Player1Area" to="." method="_on_player_1_area_body_entered"]
+[connection signal="body_entered" from="Player2Area" to="." method="_on_player_2_area_body_entered"]
